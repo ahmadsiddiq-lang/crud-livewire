@@ -75,6 +75,12 @@ class Employee extends Component
         $this->updateMode = false;
     }
 
+    public function delete($id){
+        ModelsEmployee::find($id)->delete();
+        session()->flash('message','Data karyawan berhasil dihapus');
+        $this->clear();
+    }
+
     public function render()
     {
         $data = ModelsEmployee::orderBy('id','desc')->paginate(2);
