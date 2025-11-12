@@ -74,7 +74,7 @@
                         <td>{{ $value->alamat }}</td>
                         <td>
                             <a class="btn btn-warning btn-sm" wire:click="edit({{ $value->id }})">Edit</a>
-                            <a class="btn btn-danger btn-sm">Del</a>
+                            <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalDelete" wire:click="showModalDelete({{ $value->id }})">Del</a>
                         </td>
                     </tr>
                     @endforeach
@@ -83,4 +83,22 @@
             {{ $employees->links() }}
         </div>
         <!-- AKHIR DATA -->
+        <!-- Modal -->
+        <div wire:ignore.self class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin menghapus data ini?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" wire:click="delete()" data-bs-dismiss="modal">Hapus</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>

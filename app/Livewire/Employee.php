@@ -75,7 +75,12 @@ class Employee extends Component
         $this->updateMode = false;
     }
 
-    public function delete($id){
+    public function showModalDelete($id){
+        $this->employeeId = $id;
+    }
+
+    public function delete(){
+        $id = $this->employeeId;
         ModelsEmployee::find($id)->delete();
         session()->flash('message','Data karyawan berhasil dihapus');
         $this->clear();
